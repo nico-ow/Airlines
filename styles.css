@@ -1,7 +1,11 @@
 
-body {
+ body {
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #0d1b2a, #1b263b);
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url("https://www.supplychain-outlook.com/media/Philippine-Airlines-Main-jpg-webp.webp")
+      no-repeat center center fixed;
+  background-size: cover;
   color: #222;
   margin: 0;
   padding: 0;
@@ -12,12 +16,13 @@ body {
 }
 
 .wizard-container {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
   width: 650px;
   max-width: 90%;
   padding: 40px 50px;
   border-radius: 14px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all 0.3s ease;
   display: flex;
@@ -27,9 +32,8 @@ body {
 
 .wizard-container:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
-
 
 h1 {
   margin-bottom: 25px;
@@ -39,7 +43,6 @@ h1 {
   letter-spacing: 0.3px;
   text-align: center;
 }
-
 
 .progressbar {
   position: relative;
@@ -107,7 +110,6 @@ h1 {
   font-weight: 500;
 }
 
-
 .step {
   display: none;
   width: 100%;
@@ -124,7 +126,6 @@ h1 {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 
 .form-row {
   display: flex;
@@ -180,7 +181,6 @@ input[type="date"] {
   font-family: inherit;
 }
 
-
 select {
   appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
@@ -189,7 +189,6 @@ select {
   background-size: 14px;
   padding-right: 34px;
 }
-
 
 .btn-container {
   display: flex;
@@ -230,7 +229,6 @@ select {
   transform: translateY(-1px);
 }
 
-
 #flightsList {
   display: flex;
   flex-direction: column;
@@ -255,26 +253,31 @@ select {
   transform: scale(1.01);
 }
 
-
 .toast {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: rgba(0, 0, 0, 0.85);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  background: rgba(0, 0, 0, 0.88);
   color: #fff;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-size: 14px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  padding: 18px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: all 0.4s ease;
+  z-index: 9999;
+  max-width: 80%;
+  line-height: 1.6;
 }
 
 .toast.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, -50%);
 }
+
+
 
 .summary-card {
   background: #f9f9f9;
@@ -290,6 +293,23 @@ select {
   margin: 8px 0;
   font-size: 14px;
   line-height: 1.5;
+}
+
+
+#step-passenger .form-group {
+  margin-bottom: 15px;
+}
+
+#step-passenger .form-row {
+  gap: 20px;
+}
+
+#step-passenger input,
+#step-passenger select {
+  padding: 12px;
+  border: 1.5px solid #cdd0d4;
+  border-radius: 8px;
+  margin-top: 6px;
 }
 
 
@@ -325,6 +345,14 @@ select {
     flex-direction: column;
     gap: 10px;
   }
+}
 
-  
+
+@keyframes backgroundZoom {
+  from { background-size: 100%; }
+  to { background-size: 105%; }
+}
+
+body {
+  animation: backgroundZoom 30s ease-in-out infinite alternate;
 }

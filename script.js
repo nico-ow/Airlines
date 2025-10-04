@@ -10,7 +10,6 @@ function showStep(index) {
   progress.forEach((p, i) => p.classList.toggle("active", i <= index));
 }
 
-
 document.getElementById("flightType").addEventListener("change", e => {
   document.getElementById("returnDiv").style.display =
     e.target.value === "round" ? "block" : "none";
@@ -31,7 +30,6 @@ document.getElementById("bookingForm").addEventListener("submit", e => {
   renderFlights();
   showStep(1);
 });
-
 
 function renderFlights() {
   const list = document.getElementById("flightsList");
@@ -66,7 +64,6 @@ function renderFlights() {
   });
 }
 
-
 document.getElementById("passengerForm").addEventListener("submit", e => {
   e.preventDefault();
   passenger = {
@@ -77,7 +74,6 @@ document.getElementById("passengerForm").addEventListener("submit", e => {
   showSummary();
   showStep(3);
 });
-
 
 function showSummary() {
   const card = document.getElementById("summaryCard");
@@ -93,12 +89,21 @@ function showSummary() {
   `;
 }
 
-
 document.getElementById("bookNow").addEventListener("click", () => {
   const toast = document.getElementById("toast");
-  toast.classList.remove("hidden");
-  toast.textContent = "🎉 Booking Successful!";
-  setTimeout(() => toast.classList.add("hidden"), 3000);
+  const passengerName = document.getElementById("passengerName")?.value || "Valued Guest";
+
+  toast.innerHTML = `
+    🎉 <strong>Booking Successful!</strong><br>
+    Thank you, <strong>${passengerName}</strong>, for choosing <strong>AirLines</strong>.
+  `;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 4000);
+
   showStep(0); 
 });
 
