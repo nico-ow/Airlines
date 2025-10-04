@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirLines Booking Wizard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wizard-container">
+    <h1>AirLines Booking</h1>
+
+    <div class="progressbar">
+      <div class="progress-step active" data-title="Booking"></div>
+      <div class="progress-step" data-title="Flights"></div>
+      <div class="progress-step" data-title="Passenger"></div>
+      <div class="progress-step" data-title="Summary"></div>
+    </div>
+
+    <!-- Step 1: Booking -->
+    <div class="step active" id="step-booking">
+      <form id="bookingForm">
+        <div class="form-row">
+          <div>
+            <label>From</label>
+            <input type="text" id="from" required>
+          </div>
+          <div>
+            <label>To</label>
+            <input type="text" id="to" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label>Flight Type</label>
+            <select id="flightType">
+              <option value="oneway">One Way</option>
+              <option value="round">Round Trip</option>
+            </select>
+          </div>
+          <div>
+            <label>Passengers</label>
+            <input type="number" id="numPassengers" min="1" value="1">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label>Depart Date</label>
+            <input type="date" id="departDate" required>
+          </div>
+          <div id="returnDiv" style="display:none;">
+            <label>Return Date</label>
+            <input type="date" id="returnDate">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Search Flights</button>
+      </form>
+    </div>
+
+    <!-- Step 2: Flights -->
+    <div class="step" id="step-flights">
+      <h3>Available Flights</h3>
+      <div id="flightsList"></div>
+      <button class="btn-secondary prev">Back</button>
+    </div>
+
+    <!-- Step 3: Passenger -->
+    <div class="step" id="step-passenger">
+      <h3>Passenger Information</h3>
+      <form id="passengerForm">
+        <label>Full Name</label>
+        <input type="text" id="pName" required>
+        <div class="form-row">
+          <div>
+            <label>Age</label>
+            <input type="number" id="pAge" required>
+          </div>
+          <div>
+            <label>Gender</label>
+            <select id="pGender" required>
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">Next</button>
+      </form>
+      <button class="btn-secondary prev">Back</button>
+    </div>
+
+    <!-- Step 4: Summary -->
+    <div class="step" id="step-summary">
+      <h3>Booking Summary</h3>
+      <div class="summary-card" id="summaryCard"></div>
+      <div style="margin-top:15px;">
+        <button class="btn-secondary prev">Back</button>
+        <button id="bookNow" class="btn-primary">Book Now</button>
+      </div>
+    </div>
+
+    <!-- Toast Message -->
+    <div id="toast" class="toast hidden">Booking Successful!</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
